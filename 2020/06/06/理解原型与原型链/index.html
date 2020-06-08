@@ -79,16 +79,19 @@
 
 
 
-<meta name="description" content="原型与原型链，一个非常常见且重要的js知识点。在网络上相关的教程有很多，说得很不错。但个人认为，真正掌握一个知识点在于可以组织自己的语言并清楚描述，是什么，为什么和怎么用。   原型和原型链是什么">
+<meta name="description" content="原型与原型链，一个非常常见且重要的js知识点。关于这个知识点在网络上相关的教程有很多不错的文章。但个人认为，真正掌握一个知识点在于可以组织自己的语言并清楚描述，是什么，为什么和怎么用。   原型和原型链是什么先以一个构造函数Person和它的实例jack来举例说明 123456789function Person(name, gender) &amp;#123;    this.name &#x3D; n">
 <meta property="og:type" content="article">
 <meta property="og:title" content="理解原型与原型链">
 <meta property="og:url" content="http://yoursite.com/2020/06/06/%E7%90%86%E8%A7%A3%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/index.html">
 <meta property="og:site_name" content="297 blog">
-<meta property="og:description" content="原型与原型链，一个非常常见且重要的js知识点。在网络上相关的教程有很多，说得很不错。但个人认为，真正掌握一个知识点在于可以组织自己的语言并清楚描述，是什么，为什么和怎么用。   原型和原型链是什么">
+<meta property="og:description" content="原型与原型链，一个非常常见且重要的js知识点。关于这个知识点在网络上相关的教程有很多不错的文章。但个人认为，真正掌握一个知识点在于可以组织自己的语言并清楚描述，是什么，为什么和怎么用。   原型和原型链是什么先以一个构造函数Person和它的实例jack来举例说明 123456789function Person(name, gender) &amp;#123;    this.name &#x3D; n">
+<meta property="og:image" content="https://image-static.segmentfault.com/346/346/3463469620-5ede095aca77c_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/359/300/3593008401-5ede42904971d_articlex">
 <meta property="article:published_time" content="2020-06-06T13:26:37.000Z">
-<meta property="article:modified_time" content="2020-06-06T14:28:34.022Z">
+<meta property="article:modified_time" content="2020-06-08T13:55:01.680Z">
 <meta property="article:author" content="chenyingqi">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://image-static.segmentfault.com/346/346/3463469620-5ede095aca77c_articlex">
 
 
 
@@ -298,8 +301,18 @@
       
 
       
-        <h3 id="原型与原型链，一个非常常见且重要的js知识点。在网络上相关的教程有很多，说得很不错。"><a href="#原型与原型链，一个非常常见且重要的js知识点。在网络上相关的教程有很多，说得很不错。" class="headerlink" title="原型与原型链，一个非常常见且重要的js知识点。在网络上相关的教程有很多，说得很不错。"></a>原型与原型链，一个非常常见且重要的js知识点。在网络上相关的教程有很多，说得很不错。</h3><p>但个人认为，真正掌握一个知识点在于可以组织自己的语言并清楚描述，是什么，为什么和怎么用。  </p>
-<h4 id="原型和原型链是什么"><a href="#原型和原型链是什么" class="headerlink" title="原型和原型链是什么"></a>原型和原型链是什么</h4>
+        <p>原型与原型链，一个非常常见且重要的js知识点。关于这个知识点在网络上相关的教程有很多不错的文章。但个人认为，真正掌握一个知识点在于可以组织自己的语言并清楚描述，是什么，为什么和怎么用。  </p>
+<h6 id="原型和原型链是什么"><a href="#原型和原型链是什么" class="headerlink" title="原型和原型链是什么"></a>原型和原型链是什么</h6><p>先以一个构造函数Person和它的实例jack来举例说明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function Person(name, gender) &#123;</span><br><span class="line">    this.name &#x3D; name;</span><br><span class="line">    this.gender &#x3D; gender;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.getName &#x3D; function() &#123;</span><br><span class="line">    console.log(&#39;my name is&#39; + this.name);</span><br><span class="line">&#125;</span><br><span class="line">let boy &#x3D; new Person(&#39;jack&#39;, &#39;male&#39;);</span><br><span class="line">boy.getName(); &#x2F;&#x2F; my name is jack;</span><br></pre></td></tr></table></figure>
+<p>通过打印控制台可以看到<br><img src="https://image-static.segmentfault.com/346/346/3463469620-5ede095aca77c_articlex" alt="image.png"></p>
+<p>每创建一个函数会自带有prototype属性，指向该函数的原型对象。该属性的作用在于保存它自身的方法和constructor属性，例如Person.prototype包含了getName,constrctor和<strong>proto</strong>;(每一个对象都会有<strong>proto</strong>属性,null除外,所以原型对象也会拥有)。调用了这个构造函数构造的实例（例如jack)，都可以调用它构造函数的原型对象里的属性和方法。</p>
+<p>图中的箭头数:</p>
+<p>1) jack.<strong>proto</strong>.指向了Person.prototype(它的构造函数原型的原型)<br>2) Person.prototype(构造函数的原型对象)有constructor属性，指向它的Person （构造函数）<br><em>个人理解，constructor就相当于连接jack(实例)和Person(构造函数）的桥梁</em><br>3) Person.<strong>proto</strong>指向了Function.prototype,因为Person是Function的实例<br>4) Function.prototype.constructor指向了Function<br>5) Function也包含了prototype原型对象<br>6) Function.prototype的原型属性指向了Object.prototype</p>
+<p>当我查找到了对象的顶层Object.prototype时，不禁思考一个问题，本身对象可以通过new Object创造，那么Object的构造函数又是谁。于是我根据控制台逐级向下打开<br><img src="https://image-static.segmentfault.com/359/300/3593008401-5ede42904971d_articlex" alt="图片.png"></p>
+<blockquote>
+<p>总结<br>** Object是所有对象的爸爸，所有的对象都继承自Object **<br>** Function是所有函数的爸爸，所有的函数都继承自Fucntion **<br>** 原型链是通过实例和原型对象通过constructor连接形成的 **<br>** Object.<strong>proto</strong>.constructor指向了Function **<br>** Function.prototype.<strong>proto</strong> 指向了Object.prototype **</p>
+</blockquote>
+
       
     </div>
     
@@ -459,7 +472,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#原型与原型链，一个非常常见且重要的js知识点。在网络上相关的教程有很多，说得很不错。"><span class="nav-number">1.</span> <span class="nav-text">原型与原型链，一个非常常见且重要的js知识点。在网络上相关的教程有很多，说得很不错。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原型和原型链是什么"><span class="nav-number">1.1.</span> <span class="nav-text">原型和原型链是什么</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#原型和原型链是什么"><span class="nav-number">1.</span> <span class="nav-text">原型和原型链是什么</span></a></li></ol></div>
             
 
           </div>
