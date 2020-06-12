@@ -79,14 +79,14 @@
 
 
 
-<meta name="description" content="无意间看到一篇相对古早(2016年）的技术文章，作者通过几个很简单的例子考察了JavaScript的运算符优先级、构造函数返回和变量提升等知识点。让我不禁感慨，平时工作中虽然处理了很多业务上的逻辑问题，但还是要常常回顾很底层基础的内容，我姑且称它为“修炼内功”吧。原文：一道常被人轻视的前端JS面试题 1234567891011121314151617function Foo() &amp;#123;">
+<meta name="description" content="由js数据类型的比较引起的“灵感”笔记一件众所周知的事情，js数据类型分为基本类型与引用类型。基本数据类型有null，undefined、string、number、boolean，保存在栈内存中；比较是否相等时是进行值的比较；引用类型有Object、Array、Date、RegExp、Function，存放在堆内存中，比较是否相等时是进行指针的比较；我认为可以引用类型的比较可以理解成：游客要到达">
 <meta property="og:type" content="article">
-<meta property="og:title" content="运算符优先级、变量提升的杂烩">
-<meta property="og:url" content="http://yoursite.com/2020/06/11/%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7%E3%80%81%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87%E5%92%8C%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E6%9D%82%E7%83%A9/index.html">
+<meta property="og:title" content="由js数据类型的比较引起的“灵感”笔记">
+<meta property="og:url" content="http://yoursite.com/2020/06/12/js%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E6%95%B0%E5%AD%97%E8%BD%AC%E6%8D%A2/index.html">
 <meta property="og:site_name" content="297 blog">
-<meta property="og:description" content="无意间看到一篇相对古早(2016年）的技术文章，作者通过几个很简单的例子考察了JavaScript的运算符优先级、构造函数返回和变量提升等知识点。让我不禁感慨，平时工作中虽然处理了很多业务上的逻辑问题，但还是要常常回顾很底层基础的内容，我姑且称它为“修炼内功”吧。原文：一道常被人轻视的前端JS面试题 1234567891011121314151617function Foo() &amp;#123;">
-<meta property="article:published_time" content="2020-06-10T16:22:05.000Z">
-<meta property="article:modified_time" content="2020-06-11T07:32:53.886Z">
+<meta property="og:description" content="由js数据类型的比较引起的“灵感”笔记一件众所周知的事情，js数据类型分为基本类型与引用类型。基本数据类型有null，undefined、string、number、boolean，保存在栈内存中；比较是否相等时是进行值的比较；引用类型有Object、Array、Date、RegExp、Function，存放在堆内存中，比较是否相等时是进行指针的比较；我认为可以引用类型的比较可以理解成：游客要到达">
+<meta property="article:published_time" content="2020-06-12T08:45:38.000Z">
+<meta property="article:modified_time" content="2020-06-12T08:56:34.425Z">
 <meta property="article:author" content="chenyingqi">
 <meta name="twitter:card" content="summary">
 
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/06/11/运算符优先级、变量提升和作用域的杂烩/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/06/12/js的数据类型与数字转换/"/>
 
 
 
 
 
-  <title>运算符优先级、变量提升的杂烩 | 297 blog</title>
+  <title>由js数据类型的比较引起的“灵感”笔记 | 297 blog</title>
   
 
 
@@ -241,7 +241,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/11/%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7%E3%80%81%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87%E5%92%8C%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E6%9D%82%E7%83%A9/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/12/js%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E6%95%B0%E5%AD%97%E8%BD%AC%E6%8D%A2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chenyingqi">
@@ -258,7 +258,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">运算符优先级、变量提升的杂烩</h1>
+          <h1 class="post-title" itemprop="name headline">由js数据类型的比较引起的“灵感”笔记</h1>
         
 
         <div class="post-meta">
@@ -270,8 +270,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-11T00:22:05+08:00">
-                2020-06-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-12T16:45:38+08:00">
+                2020-06-12
               </time>
             
 
@@ -330,16 +330,9 @@
       
 
       
-        <p>无意间看到一篇相对古早(2016年）的技术文章，作者通过几个很简单的例子考察了JavaScript的运算符优先级、构造函数返回和变量提升等知识点。<br>让我不禁感慨，平时工作中虽然处理了很多业务上的逻辑问题，但还是要常常回顾很底层基础的内容，我姑且称它为“修炼内功”吧。<br>原文：<a href="https://www.cnblogs.com/xxcanghai/p/5189353.html#!comments" target="_blank" rel="noopener" title="标题">一道常被人轻视的前端JS面试题</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function Foo() &#123;</span><br><span class="line">   	getName &#x3D; function () &#123; alert (1); &#125;;</span><br><span class="line">   	return this;</span><br><span class="line">   &#125;</span><br><span class="line">   Foo.getName &#x3D; function () &#123; alert (2);&#125;;</span><br><span class="line">   Foo.prototype.getName &#x3D; function () &#123; alert (3);&#125;;</span><br><span class="line">   var getName &#x3D; function () &#123; alert (4);&#125;;</span><br><span class="line">   function getName() &#123; alert (5);&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;请写出以下输出结果：</span><br><span class="line">Foo.getName(); &#x2F;&#x2F; </span><br><span class="line">getName(); &#x2F;&#x2F; </span><br><span class="line">Foo().getName(); &#x2F;&#x2F; </span><br><span class="line">getName(); &#x2F;&#x2F; </span><br><span class="line">new Foo.getName(); &#x2F;&#x2F; new (Foo.getName)() 2</span><br><span class="line">new Foo().getName(); &#x2F;&#x2F; (new Foo()).getName() 3</span><br><span class="line">new new Foo().getName(); &#x2F;&#x2F; new((new Foo()).getName()) 3</span><br></pre></td></tr></table></figure>
-<pre><code>首先考察了变量提升，即使现在ES6已被普遍使用，let 代替 var解决了它原有的问题，声明了function Foo和getName,接着声明变量getName，所以这是全局的getName是 弹出4，覆盖了原有的函数 *
-1）.毫无疑问，直接访问Foo的getName()属性方法， 弹出2*
-*2).当前执行的是getName是全局的，也就是window.getName() 弹出4*
-*3).先执行Foo(), 这时返回了Foo的实例，再进行成员访问（也就是.操作符）的getName()，但是Foo构造函数并没有给它的实例赋值，所以访问到了它的原型方法， 弹出1*
-*4).正纳闷，怎么第四和第二一样，要注意此时已经执行过Foo(),所以全局的getName()变成了弹出1*
-*5).由于成员访问 .操作符优先级高于new 所以new (Foo.getName())，弹出2*
-*6).优先级: () &gt; . &gt; new，所以(new Foo()).getName(), new Foo()返回Foo的实例，实例通过原型链查找到getName(), 弹出3*
-*7).new ((new Foo()).getName()) 先执行Foo构造函数返回实例，调用原型属性方法getName，再调用new，所以弹出3*</code></pre>
+        <p>由js数据类型的比较引起的“灵感”笔记<br>一件众所周知的事情，js数据类型分为基本类型与引用类型。<br>基本数据类型有null，undefined、string、number、boolean，保存在栈内存中；比较是否相等时是进行值的比较；<br>引用类型有Object、Array、Date、RegExp、Function，存放在堆内存中，比较是否相等时是进行指针的比较；<br>我认为可以引用类型的比较可以理解成：游客要到达xx火锅店，他可以地铁到达也可以开车到达，只要最终目的地正确就OK；<br>基本类型的比较而是到达的火锅店是否就是他计划中的那一家；<br>对了，还有一件众所周知的事情，==（相等运算符）和===（严格运算符）的区别在于==有可能会进行隐式转换，而===不会。<br>那么当引用类型与基本类型使用运算比较符比较时，则会发生一些类型转换。<br>** 当其中一个是引用类型时，会先进行.toString(),接着进行Number()转换成数字， **<br>** 如果是基本类型且又不是number，则会进行Number()转换 **</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if([]&#x3D;&#x3D;false)&#123;console.log(1)&#125; </span><br><span class="line">&#x2F;&#x2F; [].toString() -&gt; &#39;&#39;, Number(&#39;&#39;) -&gt; 0, Number(false) -&gt; 0, 0 &#x3D;&#x3D; 0 true</span><br><span class="line">if(&#123;&#125;&#x3D;&#x3D;false)&#123;console.log(2)&#125;   </span><br><span class="line">&#x2F;&#x2F; 和上面相同，&#123;&#125;.toString() -&gt; &#39;[object Object]&#39;, Number(&#39;[object Object]&#39;) -&gt; NaN NaN &#x3D;&#x3D; 0 false</span><br><span class="line">if([]&#x3D;&#x3D;0)&#123;console.log(3)&#125; </span><br><span class="line">&#x2F;&#x2F; true</span><br><span class="line">if([1]&#x3D;&#x3D;[1])&#123;console.log(4)&#125;</span><br><span class="line">&#x2F;&#x2F; false</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -363,8 +356,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/06/06/%E7%90%86%E8%A7%A3%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="next" title="理解原型与原型链">
-                <i class="fa fa-chevron-left"></i> 理解原型与原型链
+              <a href="/2020/06/11/%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7%E3%80%81%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87%E5%92%8C%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E6%9D%82%E7%83%A9/" rel="next" title="运算符优先级、变量提升的杂烩">
+                <i class="fa fa-chevron-left"></i> 运算符优先级、变量提升的杂烩
               </a>
             
           </div>
@@ -372,10 +365,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/06/12/js%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E6%95%B0%E5%AD%97%E8%BD%AC%E6%8D%A2/" rel="prev" title="由js数据类型的比较引起的“灵感”笔记">
-                由js数据类型的比较引起的“灵感”笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
