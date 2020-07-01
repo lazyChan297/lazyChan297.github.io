@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="297 blog">
 <meta property="og:description" content="浏览器是多线程的 GUI 渲染线程 JavaScript引擎线程 http请求线程 事件触发线程 定时触发器线程  JavaScript是单线程了解event loop前首先要了解JavaScript运行机制，它是单线程。举一个不十分恰当的例子，可以把它比作理发师和客户。一名理发师一次只能给一名客户剪头发or烫染，其他客户只能等待。那如果一名客户烫染时间很久的时候，难道要别的客户一直干等着吗，当然">
 <meta property="article:published_time" content="2020-06-18T09:55:11.000Z">
-<meta property="article:modified_time" content="2020-07-01T18:19:25.547Z">
+<meta property="article:modified_time" content="2020-07-01T18:26:48.135Z">
 <meta property="article:author" content="chenyingqi">
 <meta name="twitter:card" content="summary">
 
@@ -346,7 +346,7 @@
 <li>同步任务执行完毕，检查任务队列是否有任务，有则立即执行</li>
 <li>队列任务清空后，重复1的步骤一直循环</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">flowchat</span><br><span class="line">st&#x3D;&gt;start: 开始</span><br><span class="line">op1&#x3D;&gt;operation: 宏任务执行</span><br><span class="line">op2&#x3D;&gt;operation: 执行微任务</span><br><span class="line">cd1&#x3D;&gt;condition: 任务队列是否有任务</span><br><span class="line"></span><br><span class="line">op1-&gt;cd1</span><br><span class="line">cd1(yes)-&gt;op2</span><br><span class="line">cd1(no)-&gt;op1</span><br><span class="line">op2-&gt;op1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">st&#x3D;&gt;start: 开始</span><br><span class="line">op1&#x3D;&gt;operation: 宏任务执行</span><br><span class="line">op2&#x3D;&gt;operation: 执行微任务</span><br><span class="line">cd1&#x3D;&gt;condition: 任务队列是否有任务</span><br><span class="line"></span><br><span class="line">op1-&gt;cd1</span><br><span class="line">cd1(yes)-&gt;op2</span><br><span class="line">cd1(no)-&gt;op1</span><br><span class="line">op2-&gt;op1</span><br></pre></td></tr></table></figure>
 <p><strong>总结：当执行完一个宏任务后，会去检查队列里是否有微任务，如果有，依次执行全部的微任务，再接着执行下一个宏任务</strong></p>
 
       
