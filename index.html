@@ -779,7 +779,14 @@ throttle(fn, interval) &#123;1234567891011121314
       
         
           
-          JavaScript运行机制了解event loop前首先要了解JavaScript运行机制，它是单线程。则一次只能执行一个事件，后面的事件要排队。举一个不十分恰当的例子，可以把它比作理发师和客户。一名理发师一次只能给一名客户剪头发or烫染，其他客户只能等待。那如果一名客户烫染时间很久的时候，难道要
+          浏览器是多线程的
+GUI 渲染线程
+JavaScript引擎线程
+http请求线程
+事件触发线程
+定时触发器线程
+
+JavaScript是单线程了解event loop前首先要了解JavaScript运行机制，它是单线程。举一个不十分恰当的例子，可以把它比作理发师和客户。一名理发师一次只能给一名客户
           ...
           <!--noindex-->
           <div class="post-button text-center">

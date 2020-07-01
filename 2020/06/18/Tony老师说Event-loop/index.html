@@ -79,14 +79,14 @@
 
 
 
-<meta name="description" content="JavaScript运行机制了解event loop前首先要了解JavaScript运行机制，它是单线程。则一次只能执行一个事件，后面的事件要排队。举一个不十分恰当的例子，可以把它比作理发师和客户。一名理发师一次只能给一名客户剪头发or烫染，其他客户只能等待。那如果一名客户烫染时间很久的时候，难道要别的客户一直干等着吗，当然不是啦！这时理发师会请烫染的客户在一旁等候，然后给下一位客户理发。因为不同">
+<meta name="description" content="浏览器是多线程的 GUI 渲染线程 JavaScript引擎线程 http请求线程 事件触发线程 定时触发器线程  JavaScript是单线程了解event loop前首先要了解JavaScript运行机制，它是单线程。举一个不十分恰当的例子，可以把它比作理发师和客户。一名理发师一次只能给一名客户剪头发or烫染，其他客户只能等待。那如果一名客户烫染时间很久的时候，难道要别的客户一直干等着吗，当然">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tony老师说Event loop">
 <meta property="og:url" content="http://yoursite.com/2020/06/18/Tony%E8%80%81%E5%B8%88%E8%AF%B4Event-loop/index.html">
 <meta property="og:site_name" content="297 blog">
-<meta property="og:description" content="JavaScript运行机制了解event loop前首先要了解JavaScript运行机制，它是单线程。则一次只能执行一个事件，后面的事件要排队。举一个不十分恰当的例子，可以把它比作理发师和客户。一名理发师一次只能给一名客户剪头发or烫染，其他客户只能等待。那如果一名客户烫染时间很久的时候，难道要别的客户一直干等着吗，当然不是啦！这时理发师会请烫染的客户在一旁等候，然后给下一位客户理发。因为不同">
+<meta property="og:description" content="浏览器是多线程的 GUI 渲染线程 JavaScript引擎线程 http请求线程 事件触发线程 定时触发器线程  JavaScript是单线程了解event loop前首先要了解JavaScript运行机制，它是单线程。举一个不十分恰当的例子，可以把它比作理发师和客户。一名理发师一次只能给一名客户剪头发or烫染，其他客户只能等待。那如果一名客户烫染时间很久的时候，难道要别的客户一直干等着吗，当然">
 <meta property="article:published_time" content="2020-06-18T09:55:11.000Z">
-<meta property="article:modified_time" content="2020-06-28T08:04:22.800Z">
+<meta property="article:modified_time" content="2020-07-01T18:01:28.698Z">
 <meta property="article:author" content="chenyingqi">
 <meta name="twitter:card" content="summary">
 
@@ -330,10 +330,24 @@
       
 
       
-        <h5 id="JavaScript运行机制"><a href="#JavaScript运行机制" class="headerlink" title="JavaScript运行机制"></a>JavaScript运行机制</h5><p>了解event loop前首先要了解JavaScript运行机制，它是单线程。则一次只能执行一个事件，后面的事件要排队。<br>举一个不十分恰当的例子，可以把它比作理发师和客户。<br>一名理发师一次只能给一名客户剪头发or烫染，其他客户只能等待。<br>那如果一名客户烫染时间很久的时候，难道要别的客户一直干等着吗，当然不是啦！<br>这时理发师会请烫染的客户在一旁等候，然后给下一位客户理发。<br>因为不同客户服务类型不同，所以有了同步异步之分，理发可以比喻为同步任务，烫染可以理解为异步任务<br>JavaScript为什么必须是单线程的原因在于它是可以操作Dom节点的，为了防止出现有一线程修改Dom节点文本，另一线程删除该节点这种情况发生。</p>
-<h4 id="同步、异步任务"><a href="#同步、异步任务" class="headerlink" title="同步、异步任务"></a>同步、异步任务</h4><p>同步的意思非常容易理解，就是客户洗发、理发、吹头、结账，所有事情是一连串完成。<br>异步的意思则是一件事情分不同的步骤完成。当客户需要烫染时，首先上药水，等待1-2个小时，药水浸泡成效后，通知理发师，如果理发师空闲则继续对客户操作，否则当理发师剪完当前排队的客户后再操作，最后结账。</p>
-<h4 id="宏任务与微任务"><a href="#宏任务与微任务" class="headerlink" title="宏任务与微任务"></a>宏任务与微任务</h4><p>翻阅了很多资料和资料，目前并没有找到官方文档解释宏任务与微任务的定义。<br>个人认为宏任务可以理解为我们平常的代码（其实并不需要太纠结宏任务，只需要focus微任务，微任务外的所有任务都是宏任务）；<br>而微任务是异步任务的回调，例如说Promise的then、catch、finally方法。<br>既是宏任务又是异步任务：setTimeout()、setInterval()、I/O<br>微任务：Promise的回调 .then .catch .finally<br>它们之间最大的区别在于微任务是得到结果后需要立刻执行的，而宏任务是大于等于等待时间执行的</p>
-<h4 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h4><p>绕了这么久，终于写到了事件循环。<br>JS引擎开始运行，解析并执行代码，首先判断是同步还是异步，如果是同步任务，加入执行栈，异步任务放到任务队列。<br>当执行栈的事件执行完毕，将任务队列的事件释放，首先检查是否任务队列里是否存在微任务<br>如果有，全部执行完毕后再执行下一个宏任务</p>
+        <h4 id="浏览器是多线程的"><a href="#浏览器是多线程的" class="headerlink" title="浏览器是多线程的"></a>浏览器是多线程的</h4><ul>
+<li>GUI 渲染线程</li>
+<li>JavaScript引擎线程</li>
+<li>http请求线程</li>
+<li>事件触发线程</li>
+<li>定时触发器线程</li>
+</ul>
+<h4 id="JavaScript是单线程"><a href="#JavaScript是单线程" class="headerlink" title="JavaScript是单线程"></a>JavaScript是单线程</h4><p>了解event loop前首先要了解JavaScript运行机制，它是单线程。<br>举一个不十分恰当的例子，可以把它比作理发师和客户。<br>一名理发师一次只能给一名客户剪头发or烫染，其他客户只能等待。<br>那如果一名客户烫染时间很久的时候，难道要别的客户一直干等着吗，当然不是啦！<br>这时理发师会请烫染的客户在一旁等候，然后给下一位客户理发。<br>因为不同客户服务类型不同，所以有了同步异步之分，理发可以比喻为同步任务，烫染可以理解为异步任务<br>JavaScript为什么必须是单线程的原因在于它是可以操作Dom节点的，为了防止出现有一线程修改Dom节点文本，另一线程删除该节点这种情况发生。</p>
+<h4 id="同步任务与异步任务"><a href="#同步任务与异步任务" class="headerlink" title="同步任务与异步任务"></a>同步任务与异步任务</h4><p>同步任务就是会立即执行的任务。例如说，客户理发、吹头、结账，所有事情是一连串完成。<br>异步任务的意思则是一件事情分不同的步骤完成。当客户需要烫染时，首先上药水，等待1-2个小时，药水浸泡成效后，通知理发师，如果理发师空闲则继续对客户操作，否则当理发师剪完当前排队的客户后再操作，最后结账。</p>
+<h4 id="宏任务与微任务"><a href="#宏任务与微任务" class="headerlink" title="宏任务与微任务"></a>宏任务与微任务</h4><p>异步任务又分为微任务是得到结果后需要立刻执行的，而宏任务是大于等于等待时间执行的<br>宏任务: script代码、I/O、setTimeOut、setTimeInterval<br>微任务: Promise的回调 .then .catch .finally</p>
+<h4 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h4><p>绕了这么久，终于写到了事件循环。</p>
+<ol>
+<li>首先判断是同步任务还是异步任务，同步任务直接执行，异步任务进入队列等候</li>
+<li>同步任务执行完毕，检查任务队列是否有任务，有则立即执行</li>
+<li>队列任务清空后，重复1的步骤一直循环</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">flowchat</span><br><span class="line">st&#x3D;&gt;start: 开始</span><br><span class="line">op1&#x3D;&gt;operation: 宏任务执行</span><br><span class="line">op2&#x3D;&gt;operation: 执行微任务</span><br><span class="line">cd1&#x3D;&gt;condition: 任务队列是否有任务</span><br><span class="line"></span><br><span class="line">op1-&gt;cd1</span><br><span class="line">cd1(yes)-&gt;op2</span><br><span class="line">cd1(no)-&gt;op1</span><br><span class="line">op2-&gt;op1</span><br></pre></td></tr></table></figure>
+<p><strong>总结：当执行完一个宏任务后，会去检查队列里是否有微任务，如果有，依次执行全部的微任务，再接着执行下一个宏任务</strong></p>
 
       
     </div>
@@ -507,7 +521,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#JavaScript运行机制"><span class="nav-number">1.</span> <span class="nav-text">JavaScript运行机制</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#同步、异步任务"><span class="nav-number"></span> <span class="nav-text">同步、异步任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#宏任务与微任务"><span class="nav-number"></span> <span class="nav-text">宏任务与微任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事件循环"><span class="nav-number"></span> <span class="nav-text">事件循环</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器是多线程的"><span class="nav-number">1.</span> <span class="nav-text">浏览器是多线程的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JavaScript是单线程"><span class="nav-number">2.</span> <span class="nav-text">JavaScript是单线程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#同步任务与异步任务"><span class="nav-number">3.</span> <span class="nav-text">同步任务与异步任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#宏任务与微任务"><span class="nav-number">4.</span> <span class="nav-text">宏任务与微任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事件循环"><span class="nav-number">5.</span> <span class="nav-text">事件循环</span></a></li></ol></div>
             
 
           </div>
