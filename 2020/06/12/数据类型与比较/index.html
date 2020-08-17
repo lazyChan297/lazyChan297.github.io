@@ -79,14 +79,14 @@
 
 
 
-<meta name="description" content="由js数据类型的比较引起的“灵感”笔记一件众所周知的事情，js数据类型分为基本类型与引用类型。基本数据类型有null，undefined、string、number、boolean，保存在栈内存中；比较是否相等时是进行值的比较；引用类型有Object、Array、Date、RegExp、Function，存放在堆内存中，比较是否相等时是进行指针的比较；我认为可以引用类型的比较可以理解成：游客要到达">
+<meta name="description" content="一件众所周知的事情，js数据类型分为基本类型与引用类型基本数据类型有null，undefined、string、number、boolean，保存在栈内存中；比较是否相等时是进行值的比较引用类型有Object、Array、Date、RegExp、Function，存放在堆内存中，比较是否相等时是进行指针的比较我认为可以引用类型的比较可以理解成：游客要到达xx火锅店，他可以地铁到达也可以开车到达，只">
 <meta property="og:type" content="article">
-<meta property="og:title" content="由js数据类型的比较引起的“灵感”笔记">
-<meta property="og:url" content="http://yoursite.com/2020/06/12/js%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E6%95%B0%E5%AD%97%E8%BD%AC%E6%8D%A2/index.html">
+<meta property="og:title" content="数据类型与比较">
+<meta property="og:url" content="http://yoursite.com/2020/06/12/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E6%AF%94%E8%BE%83/index.html">
 <meta property="og:site_name" content="297 blog">
-<meta property="og:description" content="由js数据类型的比较引起的“灵感”笔记一件众所周知的事情，js数据类型分为基本类型与引用类型。基本数据类型有null，undefined、string、number、boolean，保存在栈内存中；比较是否相等时是进行值的比较；引用类型有Object、Array、Date、RegExp、Function，存放在堆内存中，比较是否相等时是进行指针的比较；我认为可以引用类型的比较可以理解成：游客要到达">
+<meta property="og:description" content="一件众所周知的事情，js数据类型分为基本类型与引用类型基本数据类型有null，undefined、string、number、boolean，保存在栈内存中；比较是否相等时是进行值的比较引用类型有Object、Array、Date、RegExp、Function，存放在堆内存中，比较是否相等时是进行指针的比较我认为可以引用类型的比较可以理解成：游客要到达xx火锅店，他可以地铁到达也可以开车到达，只">
 <meta property="article:published_time" content="2020-06-12T08:45:38.000Z">
-<meta property="article:modified_time" content="2020-06-12T08:56:34.425Z">
+<meta property="article:modified_time" content="2020-08-15T12:36:16.618Z">
 <meta property="article:author" content="chenyingqi">
 <meta name="twitter:card" content="summary">
 
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/06/12/js的数据类型与数字转换/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/06/12/数据类型与比较/"/>
 
 
 
 
 
-  <title>由js数据类型的比较引起的“灵感”笔记 | 297 blog</title>
+  <title>数据类型与比较 | 297 blog</title>
   
 
 
@@ -241,7 +241,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/12/js%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E6%95%B0%E5%AD%97%E8%BD%AC%E6%8D%A2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/12/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E6%AF%94%E8%BE%83/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chenyingqi">
@@ -258,7 +258,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">由js数据类型的比较引起的“灵感”笔记</h1>
+          <h1 class="post-title" itemprop="name headline">数据类型与比较</h1>
         
 
         <div class="post-meta">
@@ -330,8 +330,8 @@
       
 
       
-        <p>由js数据类型的比较引起的“灵感”笔记<br>一件众所周知的事情，js数据类型分为基本类型与引用类型。<br>基本数据类型有null，undefined、string、number、boolean，保存在栈内存中；比较是否相等时是进行值的比较；<br>引用类型有Object、Array、Date、RegExp、Function，存放在堆内存中，比较是否相等时是进行指针的比较；<br>我认为可以引用类型的比较可以理解成：游客要到达xx火锅店，他可以地铁到达也可以开车到达，只要最终目的地正确就OK；<br>基本类型的比较而是到达的火锅店是否就是他计划中的那一家；<br>对了，还有一件众所周知的事情，==（相等运算符）和===（严格运算符）的区别在于==有可能会进行隐式转换，而===不会。<br>那么当引用类型与基本类型使用运算比较符比较时，则会发生一些类型转换。<br>** 当其中一个是引用类型时，会先进行.toString(),接着进行Number()转换成数字， **<br>** 如果是基本类型且又不是number，则会进行Number()转换 **</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if([]&#x3D;&#x3D;false)&#123;console.log(1)&#125; </span><br><span class="line">&#x2F;&#x2F; [].toString() -&gt; &#39;&#39;, Number(&#39;&#39;) -&gt; 0, Number(false) -&gt; 0, 0 &#x3D;&#x3D; 0 true</span><br><span class="line">if(&#123;&#125;&#x3D;&#x3D;false)&#123;console.log(2)&#125;   </span><br><span class="line">&#x2F;&#x2F; 和上面相同，&#123;&#125;.toString() -&gt; &#39;[object Object]&#39;, Number(&#39;[object Object]&#39;) -&gt; NaN NaN &#x3D;&#x3D; 0 false</span><br><span class="line">if([]&#x3D;&#x3D;0)&#123;console.log(3)&#125; </span><br><span class="line">&#x2F;&#x2F; true</span><br><span class="line">if([1]&#x3D;&#x3D;[1])&#123;console.log(4)&#125;</span><br><span class="line">&#x2F;&#x2F; false</span><br></pre></td></tr></table></figure>
+        <p>一件众所周知的事情，js数据类型分为基本类型与引用类型<br><strong>基本数据类型有null，undefined、string、number、boolean，保存在栈内存中；比较是否相等时是进行值的比较</strong><br><strong>引用类型有Object、Array、Date、RegExp、Function，存放在堆内存中，比较是否相等时是进行指针的比较</strong><br>我认为可以引用类型的比较可以理解成：游客要到达xx火锅店，他可以地铁到达也可以开车到达，只要最终目的地正确就OK<br>基本类型的比较而是到达的火锅店是否就是他计划中的那一家<br>对了，还有一件众所周知的事情，==（相等运算符）和===（严格运算符）的区别在于==有可能会进行隐式转换，而===不会<br>那么当引用类型与基本类型使用运算比较符比较时，则会发生一些类型转换。<br><strong>当其中一个是引用类型时，会先进行.toString(),接着进行Number()转换成数字</strong><br><strong>如果是基本类型且又不是number，则会进行Number()转换</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ([] == <span class="literal">false</span>) &#123; <span class="built_in">console</span>.log(<span class="number">1</span>); &#125; </span><br><span class="line"><span class="comment">// [].toString() -&gt; '', Number('') -&gt; 0, Number(false) -&gt; 0, 0 == 0 true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (&#123;&#125; == <span class="literal">false</span>) &#123; <span class="built_in">console</span>.log(<span class="number">2</span>); &#125;   </span><br><span class="line"><span class="comment">// 和上面相同，&#123;&#125;.toString() -&gt; '[object Object]', Number('[object Object]') -&gt; NaN NaN == 0 false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ([] == <span class="number">0</span>) &#123; <span class="built_in">console</span>.log(<span class="number">3</span>); &#125; </span><br><span class="line"><span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ( [<span class="number">1</span>] == [<span class="number">1</span>]) &#123; <span class="built_in">console</span>.log(<span class="number">4</span>); &#125;</span><br><span class="line"><span class="comment">// false</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -366,7 +366,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/06/16/JavaScript%E7%9A%84%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E3%80%81this%E5%92%8C%E9%97%AD%E5%8C%85/" rel="prev" title="执行上下文、this和闭包">
+              <a href="/2020/06/16/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E3%80%81this%E5%92%8C%E9%97%AD%E5%8C%85/" rel="prev" title="执行上下文、this和闭包">
                 执行上下文、this和闭包 <i class="fa fa-chevron-right"></i>
               </a>
             
