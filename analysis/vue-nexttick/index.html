@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>NextTick和批量异步更新策略 | 297 blog</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/logo.jpg">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="297 blog">
+    
+    <link rel="preload" href="/assets/css/0.styles.f0eb3862.css" as="style"><link rel="preload" href="/assets/js/app.5ec938e9.js" as="script"><link rel="preload" href="/assets/js/2.270d282d.js" as="script"><link rel="preload" href="/assets/js/37.42dbf4bc.js" as="script"><link rel="prefetch" href="/assets/js/10.8068544d.js"><link rel="prefetch" href="/assets/js/11.b810643b.js"><link rel="prefetch" href="/assets/js/12.5a23f3ee.js"><link rel="prefetch" href="/assets/js/13.22368437.js"><link rel="prefetch" href="/assets/js/14.b308de21.js"><link rel="prefetch" href="/assets/js/15.6b48e774.js"><link rel="prefetch" href="/assets/js/16.b7999003.js"><link rel="prefetch" href="/assets/js/17.d410c546.js"><link rel="prefetch" href="/assets/js/18.82fd31d6.js"><link rel="prefetch" href="/assets/js/19.c5176c2d.js"><link rel="prefetch" href="/assets/js/20.990b9bd4.js"><link rel="prefetch" href="/assets/js/21.aa205aaa.js"><link rel="prefetch" href="/assets/js/22.d47a8271.js"><link rel="prefetch" href="/assets/js/23.8380b2de.js"><link rel="prefetch" href="/assets/js/24.60d1daa2.js"><link rel="prefetch" href="/assets/js/25.7a10d331.js"><link rel="prefetch" href="/assets/js/26.46886c91.js"><link rel="prefetch" href="/assets/js/27.ef38de8b.js"><link rel="prefetch" href="/assets/js/28.322751d6.js"><link rel="prefetch" href="/assets/js/29.64bc9c06.js"><link rel="prefetch" href="/assets/js/3.7585634d.js"><link rel="prefetch" href="/assets/js/30.44440b28.js"><link rel="prefetch" href="/assets/js/31.1e6e9318.js"><link rel="prefetch" href="/assets/js/32.637d364b.js"><link rel="prefetch" href="/assets/js/33.8dc57b3a.js"><link rel="prefetch" href="/assets/js/34.0b3bc232.js"><link rel="prefetch" href="/assets/js/35.e633d5d3.js"><link rel="prefetch" href="/assets/js/36.3a11361b.js"><link rel="prefetch" href="/assets/js/38.15b0e4ce.js"><link rel="prefetch" href="/assets/js/39.0abb7d14.js"><link rel="prefetch" href="/assets/js/4.6e45c2f6.js"><link rel="prefetch" href="/assets/js/40.da63ea83.js"><link rel="prefetch" href="/assets/js/41.f41c6635.js"><link rel="prefetch" href="/assets/js/42.dc07c7a5.js"><link rel="prefetch" href="/assets/js/43.e3eda78c.js"><link rel="prefetch" href="/assets/js/44.4322f952.js"><link rel="prefetch" href="/assets/js/45.54eb0056.js"><link rel="prefetch" href="/assets/js/46.9e575786.js"><link rel="prefetch" href="/assets/js/47.0abc400f.js"><link rel="prefetch" href="/assets/js/48.b1278165.js"><link rel="prefetch" href="/assets/js/49.9b4ff511.js"><link rel="prefetch" href="/assets/js/5.3f6386b3.js"><link rel="prefetch" href="/assets/js/50.b89e4e9c.js"><link rel="prefetch" href="/assets/js/51.d4385674.js"><link rel="prefetch" href="/assets/js/52.be50eece.js"><link rel="prefetch" href="/assets/js/53.2f647cc9.js"><link rel="prefetch" href="/assets/js/54.1e5f5b4f.js"><link rel="prefetch" href="/assets/js/55.4695b127.js"><link rel="prefetch" href="/assets/js/56.27ddab6e.js"><link rel="prefetch" href="/assets/js/57.05cf4bba.js"><link rel="prefetch" href="/assets/js/58.41834c36.js"><link rel="prefetch" href="/assets/js/59.cbb32889.js"><link rel="prefetch" href="/assets/js/6.437b8f0c.js"><link rel="prefetch" href="/assets/js/60.e368c66a.js"><link rel="prefetch" href="/assets/js/61.367e9e4c.js"><link rel="prefetch" href="/assets/js/62.9d13d61c.js"><link rel="prefetch" href="/assets/js/63.cad5f803.js"><link rel="prefetch" href="/assets/js/64.e6db2d9c.js"><link rel="prefetch" href="/assets/js/65.499322b1.js"><link rel="prefetch" href="/assets/js/66.249a3118.js"><link rel="prefetch" href="/assets/js/67.f35b76a0.js"><link rel="prefetch" href="/assets/js/68.86cea2f9.js"><link rel="prefetch" href="/assets/js/69.e5794e36.js"><link rel="prefetch" href="/assets/js/7.b57c72fc.js"><link rel="prefetch" href="/assets/js/70.6bc69b96.js"><link rel="prefetch" href="/assets/js/71.cbfef801.js"><link rel="prefetch" href="/assets/js/72.17cdb10f.js"><link rel="prefetch" href="/assets/js/73.bf783174.js"><link rel="prefetch" href="/assets/js/74.c35d9540.js"><link rel="prefetch" href="/assets/js/75.b1202a71.js"><link rel="prefetch" href="/assets/js/76.76639e56.js"><link rel="prefetch" href="/assets/js/77.8788b0e1.js"><link rel="prefetch" href="/assets/js/78.d9125cf4.js"><link rel="prefetch" href="/assets/js/8.c40ec890.js"><link rel="prefetch" href="/assets/js/9.023b1a72.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.f0eb3862.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">297 blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>git</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JavaScript</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>异步编程</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>algorithm</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>设计模式</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>vue源码学习</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/analysis/vue2-reactive/" class="sidebar-link">vue2的响应式原理</a></li><li><a href="/analysis/vue3-reactive/" class="sidebar-link">vue3的响应式原理</a></li><li><a href="/analysis/vue-lifecycle/" class="sidebar-link">生命周期</a></li><li><a href="/analysis/vue-nexttick/" aria-current="page" class="active sidebar-link">NextTick和批量异步更新策略</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/analysis/vue-nexttick/#nexttick" class="sidebar-link">nextTick</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/analysis/vue-nexttick/#实现原理" class="sidebar-link">实现原理</a></li><li class="sidebar-sub-header"><a href="/analysis/vue-nexttick/#实现源码" class="sidebar-link">实现源码</a></li></ul></li><li class="sidebar-sub-header"><a href="/analysis/vue-nexttick/#批量异步更新策略" class="sidebar-link">批量异步更新策略</a></li><li class="sidebar-sub-header"><a href="/analysis/vue-nexttick/#手写nexttick并实现批量异步更新" class="sidebar-link">手写nextTick并实现批量异步更新</a></li></ul></li><li><a href="/analysis/vue-keepalive/" class="sidebar-link">keep-alive实现缓存原理</a></li><li><a href="/analysis/v3-diff/" class="sidebar-link">v3diff算法</a></li><li><a href="/analysis/vue-diff/" class="sidebar-link">v2diff算法</a></li><li><a href="/analysis/vue-computed/" class="sidebar-link">computed实现原理</a></li><li><a href="/analysis/vue-set/" class="sidebar-link">$set的实现原理</a></li><li><a href="/analysis/vue2-array-reactive/" class="sidebar-link">vue2监听数组变化</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>网络</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>node</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>浏览器</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>工程</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>CSS</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="nexttick和批量异步更新策略"><a href="#nexttick和批量异步更新策略" class="header-anchor">#</a> NextTick和批量异步更新策略</h1> <h2 id="nexttick"><a href="#nexttick" class="header-anchor">#</a> nextTick</h2> <p>nextTick是一个实现函数批量异步执行的工具函数。</p> <h3 id="实现原理"><a href="#实现原理" class="header-anchor">#</a> 实现原理</h3> <ol><li><code>nextTick(cb)</code>会把需要异步执行的函数添加到一个全局对象<code>callbacks</code>数组中</li> <li>判断<code>pending</code>的值，当前是否有负责批量执行异步函数的<code>flushCallbacks</code>函数注册到异步任务中</li></ol> <ul><li><code>pending</code>为<code>true</code>，表示已经有批量执行异步函数任务注册</li> <li><code>pending</code>为<code>false</code>，表示没有</li></ul> <ol start="3"><li>通过<code>timerFunc</code>把<code>flushCallbacks</code>函数注册到异步任务中；通过以下几种方法之一实现</li></ol> <ul><li>当前环境支持<code>Promise</code>，<code>timerFunc</code>赋值为<code>Promise.resolve()</code>把<code>flushCallbacks</code>回调放到<code>then</code>回调中</li> <li>当前环境支持<code>new MutationObserver()</code></li> <li>当前环境支持<code>setImmediate</code>,把<code>timerFunc</code>赋值为匿名函数，函数体内把<code>flushCallbacks</code>作为参数传入<code>setImmediate</code>中</li> <li>当前环境支持<code>setTimeout</code>，赋值方式和<code>setImmediate</code>大体相同</li></ul> <ol start="4"><li>调用<code>timerFunc</code>把<code>flushCallbacks</code>注册到异步任务队列中</li> <li>异步任务开始执行，<code>flushCallbacks</code>把callbacks数组拷贝然后遍历该数组执行，同时把callbacks数组清空，将<code>pending</code>状态更新为<code>false</code>，允许注册下一轮nextTick函数</li></ol> <p><strong>一些变量和函数说明</strong></p> <ul><li><strong>pending</strong> 布尔值，表示是否可以把批量执行异步回调的函数注册到异步队列中</li> <li><strong>callbacks</strong> 数组，负责保存需要注册到异步执行的函数</li> <li><strong>flushCallbacks</strong> 函数，负责遍历执行callbacks并清空该数组、把pending设为false</li> <li><strong>next-tick</strong> 负责注册flushCallbacks到异步任务队列中和把需要在当前同步函数执行后再执行的函数添加到callbacks数组中</li> <li><strong>timerFunc</strong> 将<code>flushCallbacks</code>函数变为微任务注册到异步队列的具体实现，<br>
+原理是利用<code>Promise</code>or<code>setImmediate</code>or<code>MutationObserver</code>or<code>setTimeout</code>实现异步回调在本次同步代码执行结束后调用callbacks的函数，
+这样就可以保证<code>callbacks</code>函数异步执行<br></li></ul> <p>以<code>Promise</code>为例</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">let</span> timerFunc
+<span class="token keyword">const</span> p <span class="token operator">=</span> Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+timerFunc <span class="token operator">=</span> p<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>flushCallbacks<span class="token punctuation">)</span>
+</code></pre></div><h3 id="实现源码"><a href="#实现源码" class="header-anchor">#</a> 实现源码</h3> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">flushCallbacks</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 这一轮的callbacks开始执行，运行注册下一轮的开关打开</span>
+  pending <span class="token operator">=</span> <span class="token boolean">false</span>
+  <span class="token keyword">const</span> copies <span class="token operator">=</span> callbacks<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+  callbacks<span class="token punctuation">.</span>length <span class="token operator">=</span> <span class="token number">0</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> copies<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    copies<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> timerFunc
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> Promise <span class="token operator">!==</span> <span class="token string">'undefined'</span> <span class="token operator">&amp;&amp;</span> <span class="token function">isNative</span><span class="token punctuation">(</span>Promise<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> p <span class="token operator">=</span> Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token function-variable function">timerFunc</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    p<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>flushCallbacks<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>isIE <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> MutationObserver <span class="token operator">!==</span> <span class="token string">'undefined'</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>
+  <span class="token function">isNative</span><span class="token punctuation">(</span>MutationObserver<span class="token punctuation">)</span> <span class="token operator">||</span>
+  MutationObserver<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'[object MutationObserverConstructor]'</span>
+<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> counter <span class="token operator">=</span> <span class="token number">1</span>
+  <span class="token keyword">const</span> observer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MutationObserver</span><span class="token punctuation">(</span>flushCallbacks<span class="token punctuation">)</span>
+  <span class="token keyword">const</span> textNode <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createTextNode</span><span class="token punctuation">(</span><span class="token function">String</span><span class="token punctuation">(</span>counter<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  observer<span class="token punctuation">.</span><span class="token function">observe</span><span class="token punctuation">(</span>textNode<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    characterData<span class="token operator">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token function-variable function">timerFunc</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    counter <span class="token operator">=</span> <span class="token punctuation">(</span>counter <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">2</span>
+    textNode<span class="token punctuation">.</span>data <span class="token operator">=</span> <span class="token function">String</span><span class="token punctuation">(</span>counter<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  isUsingMicroTask <span class="token operator">=</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> setImmediate <span class="token operator">!==</span> <span class="token string">'undefined'</span> <span class="token operator">&amp;&amp;</span> <span class="token function">isNative</span><span class="token punctuation">(</span>setImmediate<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">timerFunc</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token function">setImmediate</span><span class="token punctuation">(</span>flushCallbacks<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">timerFunc</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token function">setTimeout</span><span class="token punctuation">(</span>flushCallbacks<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">nextTick</span> <span class="token punctuation">(</span><span class="token parameter">cb<span class="token operator">?</span><span class="token operator">:</span> Function<span class="token punctuation">,</span> ctx<span class="token operator">?</span><span class="token operator">:</span> Object</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> _resolve
+  callbacks<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>cb<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        <span class="token function">cb</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>ctx<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">handleError</span><span class="token punctuation">(</span>e<span class="token punctuation">,</span> ctx<span class="token punctuation">,</span> <span class="token string">'nextTick'</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>_resolve<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">_resolve</span><span class="token punctuation">(</span>ctx<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>pending<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    pending <span class="token operator">=</span> <span class="token boolean">true</span>
+    <span class="token function">timerFunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// $flow-disable-line</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>cb <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> Promise <span class="token operator">!==</span> <span class="token string">'undefined'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 因为nexttick是支持then操作的，所以返回了一个promise</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token parameter">resolve</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      _resolve <span class="token operator">=</span> resolve
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="批量异步更新策略"><a href="#批量异步更新策略" class="header-anchor">#</a> 批量异步更新策略</h2> <p>实现原理是基于<code>nextTick</code>的功能，批量的把观察者实例们的更新操作都注册到异步队列中，<br></p> <ol><li>组件更新，观察者实例执行<code>update</code>方法，如果是异步组件会进入调用<code>queueWatcher</code>函数</li> <li><code>queueWatcher</code>判断当前是否有观察者队列在执行更新回调，根据<code>flushing</code>字段</li></ol> <ul><li><code>flushing</code>为<code>true</code>，直接将当前观察者推入队列的末尾</li> <li><code>flushing</code>为<code>false</code>，根据当前观察者的id插入到对应的位置（按id从小到大排列），使队列上的观察者函数有序更新</li></ul> <ol start="3"><li>通过<code>waiting</code>字段判断是否有<code>flushSchedulerQueue</code>函数注册到异步任务队列（nextTick的callbacks数组中）</li></ol> <ul><li><code>waiting</code>为<code>true</code>，表示已经注册过</li> <li><code>waiting</code>为<code>false</code>，调用<code>nextTick(flushSchedulerQueue)</code>将<code>flushSchedulerQueue</code>添加到异步更新队列中</li></ul> <ol start="4"><li>当<code>flushSchedulerQueue</code>函数开始执行，把queue的观察者函数按照id进行从小到大排列，因为更新是从父-子，打开flushing开关，设置为true。该函数遍历队列上的
+观察者函数执行，调用<code>watcher.run()</code>，<code>run</code>方法函数内又调用了<code>watcher.get()</code>方法，也就是此时才会去访问响应式对象的值获取最新的值，使视图更新</li> <li>执行完毕后，把<code>flushing</code>和<code>waiting</code>状态都改为false，并把queue队列清空</li></ol> <p><strong>vue中数据的更新是批量异步更新是怎么理解的？为什么要这样做？</strong><br>
+每当响应式对象更新了，它所有的观察者实例都会执行更新的回调，流程如下<br> <code>1：响应式对象setter</code> -&gt; <code>2：观察者实例update</code> -&gt; <code>3：观察者实例__update__</code> -&gt; <code>4：patch</code> -&gt; <code>5：视图更新</code>
+第三步会生成新的vnode，第四步会执行diff比较，第五步会更新dom，<br>
+处于性能提升的考虑，vue会把第二步后面的步骤通过<code>nextTick</code>放到一个异步函数的队列中，<br>
+当执行完前面的同步代码，才会批量更新。</p> <ol><li><strong>当响应式对象更新后，通知它的观察者函数更新</strong><br>
+如果是异步更新的组件，这一步骤只会把该组件中响应式对象的观察者添加到队列（所有异步更新的观察者的队列队）中排队，<br>
+并不会真正执行更新的回调</li></ol> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token function">update</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>lazy<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>dirty <span class="token operator">=</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>sync<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token function">queueWatcher</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+</code></pre></div><ol start="2"><li><strong>将观察者添加到异步更新队列</strong><br>
+在<code>queueWatcher</code>函数中判断，如果已经存在队列中，不做任何操作。如果不存在则添加到队列中</li></ol> <div class="language-javascript extra-class"><pre class="language-javascript"><code>    <span class="token keyword">const</span> id <span class="token operator">=</span> watcher<span class="token punctuation">.</span>id
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>has<span class="token punctuation">[</span>id<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            has<span class="token punctuation">[</span>id<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><ol start="3"><li><strong>将当前的观察者实例插入正确的顺序中</strong>
+在<code>queueWatcher</code>函数中处理，如果此时已经在遍历异步更新的队列，把当前的观察者实例按顺序(根据id)插入到队列中对应的位置，<br>
+目的是为了让它顺序执行，<br>
+如果没有在遍历异步更新的队列，让当前观察者实例直接到队列的末端</li></ol> <div class="language-javascript extra-class"><pre class="language-javascript"><code>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>flushing<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>watcher<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> i <span class="token operator">=</span> queue<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span>
+      <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&gt;</span> index <span class="token operator">&amp;&amp;</span> queue<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>id <span class="token operator">&gt;</span> watcher<span class="token punctuation">.</span>id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        i<span class="token operator">--</span>
+      <span class="token punctuation">}</span>
+      queue<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> watcher<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><ol start="4"><li><strong>将批量执行异步更新的函数注册到微任务队列中，等待执行<br></strong> <code>flushSchedulerQueue</code>函数负责遍历队列里每一个观察者函数各自的异步更新方法，<br>
+所以把<code>flushSchedulerQueue</code>函数注册到微任务队列中，<br>
+如果当前没有<code>nextTick</code>任务在等待，开启本轮nextTick，对前面的观察者实例执行异步更新回调</li></ol> <div class="language-javascript extra-class"><pre class="language-javascript"><code>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>waiting<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      waiting <span class="token operator">=</span> <span class="token boolean">true</span>
+      <span class="token function">nextTick</span><span class="token punctuation">(</span>flushSchedulerQueue<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><ol start="5"><li><strong>遍历执行每一个观察者实例的异步更新方法<br></strong>
+对队列的观察者实例们从小到大排序，<br>
+然后将每一个观察者实例移除队列，因为它们已经执行各自的更新回调，不再需要排队<br>
+接着执行它们的<code>run()</code>方法，也就是触发试图更新的方法</li></ol> <p>在<code>flushSchedulerQueue</code>中处理</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// 排序</span>
+queue<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> a<span class="token punctuation">.</span>id <span class="token operator">-</span> b<span class="token punctuation">.</span>id<span class="token punctuation">)</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span>index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> index <span class="token operator">&lt;</span> queue<span class="token punctuation">.</span>length<span class="token punctuation">;</span> index<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    watcher <span class="token operator">=</span> queue<span class="token punctuation">[</span>index<span class="token punctuation">]</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>watcher<span class="token punctuation">.</span>before<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      watcher<span class="token punctuation">.</span><span class="token function">before</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    id <span class="token operator">=</span> watcher<span class="token punctuation">.</span>id
+    <span class="token comment">// 移除当前观察者</span>
+    has<span class="token punctuation">[</span>id<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">null</span>
+    <span class="token comment">// 触发试图更新</span>
+    watcher<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+</code></pre></div><ol start="6"><li><strong>重置状态</strong> <br>
+把队列清空，
+<code>waiting</code>设置为<code>false</code>，表示当前没有nextTick任务<br> <code>flushing</code>设置为<code>false</code>, 表示当前没有队列在遍历<br> <code>has</code>设置为空，表示当前队列没有观察者实例<br></li></ol> <h2 id="手写nexttick并实现批量异步更新"><a href="#手写nexttick并实现批量异步更新" class="header-anchor">#</a> 手写nextTick并实现批量异步更新</h2> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">let</span> uid <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">class</span> <span class="token class-name">Watcher</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// uid为watcher唯一标识</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>id <span class="token operator">=</span> <span class="token operator">++</span>uid
+    <span class="token punctuation">}</span>
+    <span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>id<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> update</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+        <span class="token comment">// 每一个watcher(观察者)被update后会调用queueWatcher(this)</span>
+        <span class="token function">queueWatcher</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>id<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> run</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> has <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">let</span> queue <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">let</span> waiting <span class="token operator">=</span> <span class="token boolean">false</span>
+<span class="token comment">// queueWatcher函数负责把当前watcher推入队列并做去重处理（watcher用id作为唯一标识）</span>
+<span class="token comment">// waiting用来标记本轮更新是否有nextTick队列在等候，没有则调用nextTick(flushQueue)清空当前队列的回调任务并把waiting标识为true</span>
+<span class="token keyword">function</span> <span class="token function">queueWatcher</span><span class="token punctuation">(</span><span class="token parameter">watcher</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> id <span class="token operator">=</span> watcher<span class="token punctuation">.</span>id
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>has<span class="token punctuation">[</span>id<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        has<span class="token punctuation">[</span>id<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span>
+        <span class="token comment">// 把update的watcher推入队列</span>
+        queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>watcher<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>waiting<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        waiting <span class="token operator">=</span> <span class="token boolean">true</span>
+        <span class="token function">nextTick</span><span class="token punctuation">(</span>flushQueue<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> callbacks <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">let</span> pending <span class="token operator">=</span> <span class="token boolean">false</span>
+
+<span class="token comment">//nextTick函数内部实现了一个函数timeFunc，可以异步执行flushCallbacks。并接收一个函数参数推入callbacks数组，等待flushCallbacks时执行</span>
+<span class="token comment">//  （用Promise或MutationObserver或setImmediate或setTimeout等方式）</span>
+<span class="token keyword">function</span> <span class="token function">nextTick</span><span class="token punctuation">(</span><span class="token parameter">cb</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    callbacks<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>cb<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>pending<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        pending <span class="token operator">=</span> <span class="token boolean">true</span>
+        <span class="token comment">// 根据eventLoop机制实现异步回调</span>
+        <span class="token function">setTimeout</span><span class="token punctuation">(</span>flushCallbacks<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// flushCallbacks负责遍历全局callbacks并清空它，用pending来标识是否在flush</span>
+<span class="token keyword">function</span> <span class="token function">flushCallbacks</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    pending <span class="token operator">=</span> <span class="token boolean">false</span>
+    <span class="token comment">// 复制callbacks</span>
+    <span class="token keyword">let</span> copies <span class="token operator">=</span> callbacks<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token comment">// 清空callbacks</span>
+    callbacks<span class="token punctuation">.</span>length <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> copies<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        copies<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 当flushQueue执行，把queue里的watcher遍历并执行watcher.run()</span>
+<span class="token keyword">function</span> <span class="token function">flushQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> watcher<span class="token punctuation">,</span> id
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>queue<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        watcher <span class="token operator">=</span> queue<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+        id <span class="token operator">=</span> watcher<span class="token punctuation">.</span>id
+        has<span class="token punctuation">[</span>id<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">null</span>
+        watcher<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 结束后把waiting重新设置为false，当前nextTick上的任务执行完毕</span>
+    waiting <span class="token operator">=</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span>
+
+<span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> w1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Watcher</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> w2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Watcher</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    w1<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    w1<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    w2<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/analysis/vue-lifecycle/" class="prev">
+        生命周期
+      </a></span> <span class="next"><a href="/analysis/vue-keepalive/">
+        keep-alive实现缓存原理
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.5ec938e9.js" defer></script><script src="/assets/js/2.270d282d.js" defer></script><script src="/assets/js/37.42dbf4bc.js" defer></script>
+  </body>
+</html>

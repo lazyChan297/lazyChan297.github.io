@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>链表 | 297 blog</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/logo.jpg">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="297 blog">
+    
+    <link rel="preload" href="/assets/css/0.styles.f0eb3862.css" as="style"><link rel="preload" href="/assets/js/app.5ec938e9.js" as="script"><link rel="preload" href="/assets/js/2.270d282d.js" as="script"><link rel="preload" href="/assets/js/29.64bc9c06.js" as="script"><link rel="prefetch" href="/assets/js/10.8068544d.js"><link rel="prefetch" href="/assets/js/11.b810643b.js"><link rel="prefetch" href="/assets/js/12.5a23f3ee.js"><link rel="prefetch" href="/assets/js/13.22368437.js"><link rel="prefetch" href="/assets/js/14.b308de21.js"><link rel="prefetch" href="/assets/js/15.6b48e774.js"><link rel="prefetch" href="/assets/js/16.b7999003.js"><link rel="prefetch" href="/assets/js/17.d410c546.js"><link rel="prefetch" href="/assets/js/18.82fd31d6.js"><link rel="prefetch" href="/assets/js/19.c5176c2d.js"><link rel="prefetch" href="/assets/js/20.990b9bd4.js"><link rel="prefetch" href="/assets/js/21.aa205aaa.js"><link rel="prefetch" href="/assets/js/22.d47a8271.js"><link rel="prefetch" href="/assets/js/23.8380b2de.js"><link rel="prefetch" href="/assets/js/24.60d1daa2.js"><link rel="prefetch" href="/assets/js/25.7a10d331.js"><link rel="prefetch" href="/assets/js/26.46886c91.js"><link rel="prefetch" href="/assets/js/27.ef38de8b.js"><link rel="prefetch" href="/assets/js/28.322751d6.js"><link rel="prefetch" href="/assets/js/3.7585634d.js"><link rel="prefetch" href="/assets/js/30.44440b28.js"><link rel="prefetch" href="/assets/js/31.1e6e9318.js"><link rel="prefetch" href="/assets/js/32.637d364b.js"><link rel="prefetch" href="/assets/js/33.8dc57b3a.js"><link rel="prefetch" href="/assets/js/34.0b3bc232.js"><link rel="prefetch" href="/assets/js/35.e633d5d3.js"><link rel="prefetch" href="/assets/js/36.3a11361b.js"><link rel="prefetch" href="/assets/js/37.42dbf4bc.js"><link rel="prefetch" href="/assets/js/38.15b0e4ce.js"><link rel="prefetch" href="/assets/js/39.0abb7d14.js"><link rel="prefetch" href="/assets/js/4.6e45c2f6.js"><link rel="prefetch" href="/assets/js/40.da63ea83.js"><link rel="prefetch" href="/assets/js/41.f41c6635.js"><link rel="prefetch" href="/assets/js/42.dc07c7a5.js"><link rel="prefetch" href="/assets/js/43.e3eda78c.js"><link rel="prefetch" href="/assets/js/44.4322f952.js"><link rel="prefetch" href="/assets/js/45.54eb0056.js"><link rel="prefetch" href="/assets/js/46.9e575786.js"><link rel="prefetch" href="/assets/js/47.0abc400f.js"><link rel="prefetch" href="/assets/js/48.b1278165.js"><link rel="prefetch" href="/assets/js/49.9b4ff511.js"><link rel="prefetch" href="/assets/js/5.3f6386b3.js"><link rel="prefetch" href="/assets/js/50.b89e4e9c.js"><link rel="prefetch" href="/assets/js/51.d4385674.js"><link rel="prefetch" href="/assets/js/52.be50eece.js"><link rel="prefetch" href="/assets/js/53.2f647cc9.js"><link rel="prefetch" href="/assets/js/54.1e5f5b4f.js"><link rel="prefetch" href="/assets/js/55.4695b127.js"><link rel="prefetch" href="/assets/js/56.27ddab6e.js"><link rel="prefetch" href="/assets/js/57.05cf4bba.js"><link rel="prefetch" href="/assets/js/58.41834c36.js"><link rel="prefetch" href="/assets/js/59.cbb32889.js"><link rel="prefetch" href="/assets/js/6.437b8f0c.js"><link rel="prefetch" href="/assets/js/60.e368c66a.js"><link rel="prefetch" href="/assets/js/61.367e9e4c.js"><link rel="prefetch" href="/assets/js/62.9d13d61c.js"><link rel="prefetch" href="/assets/js/63.cad5f803.js"><link rel="prefetch" href="/assets/js/64.e6db2d9c.js"><link rel="prefetch" href="/assets/js/65.499322b1.js"><link rel="prefetch" href="/assets/js/66.249a3118.js"><link rel="prefetch" href="/assets/js/67.f35b76a0.js"><link rel="prefetch" href="/assets/js/68.86cea2f9.js"><link rel="prefetch" href="/assets/js/69.e5794e36.js"><link rel="prefetch" href="/assets/js/7.b57c72fc.js"><link rel="prefetch" href="/assets/js/70.6bc69b96.js"><link rel="prefetch" href="/assets/js/71.cbfef801.js"><link rel="prefetch" href="/assets/js/72.17cdb10f.js"><link rel="prefetch" href="/assets/js/73.bf783174.js"><link rel="prefetch" href="/assets/js/74.c35d9540.js"><link rel="prefetch" href="/assets/js/75.b1202a71.js"><link rel="prefetch" href="/assets/js/76.76639e56.js"><link rel="prefetch" href="/assets/js/77.8788b0e1.js"><link rel="prefetch" href="/assets/js/78.d9125cf4.js"><link rel="prefetch" href="/assets/js/8.c40ec890.js"><link rel="prefetch" href="/assets/js/9.023b1a72.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.f0eb3862.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">297 blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>git</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JavaScript</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>异步编程</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>algorithm</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/algorithm/Array&amp;Matrix/" class="sidebar-link">数组与矩阵</a></li><li><a href="/algorithm/BinaryTree/" class="sidebar-link">二叉树</a></li><li><a href="/algorithm/DP/" class="sidebar-link">动态规划</a></li><li><a href="/algorithm/KMP/" class="sidebar-link">KMP</a></li><li><a href="/algorithm/linkedList/" aria-current="page" class="active sidebar-link">链表</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/algorithm/linkedList/#链表反转" class="sidebar-link">链表反转</a></li><li class="sidebar-sub-header"><a href="/algorithm/linkedList/#回文链表" class="sidebar-link">回文链表</a></li><li class="sidebar-sub-header"><a href="/algorithm/linkedList/#链表每k个一组反转" class="sidebar-link">链表每k个一组反转</a></li><li class="sidebar-sub-header"><a href="/algorithm/linkedList/#链表指定区间反转" class="sidebar-link">链表指定区间反转</a></li><li class="sidebar-sub-header"><a href="/algorithm/linkedList/#返回链表倒数第k个节点" class="sidebar-link">返回链表倒数第k个节点</a></li><li class="sidebar-sub-header"><a href="/algorithm/linkedList/#两个链表的第一个公共结点" class="sidebar-link">两个链表的第一个公共结点</a></li><li class="sidebar-sub-header"><a href="/algorithm/linkedList/#判断链表中是否有环" class="sidebar-link">判断链表中是否有环</a></li><li class="sidebar-sub-header"><a href="/algorithm/linkedList/#链表中环的入口结点" class="sidebar-link">链表中环的入口结点</a></li><li class="sidebar-sub-header"><a href="/algorithm/linkedList/#单链表排序" class="sidebar-link">单链表排序</a></li><li class="sidebar-sub-header"><a href="/algorithm/linkedList/#重排链表" class="sidebar-link">重排链表</a></li><li class="sidebar-sub-header"><a href="/algorithm/linkedList/#合并两个排序的链表" class="sidebar-link">合并两个排序的链表</a></li><li class="sidebar-sub-header"><a href="/algorithm/linkedList/#删除链表的倒数第n个节点" class="sidebar-link">删除链表的倒数第n个节点</a></li><li class="sidebar-sub-header"><a href="/algorithm/linkedList/#删除链表中的重复元素" class="sidebar-link">删除链表中的重复元素</a></li><li class="sidebar-sub-header"><a href="/algorithm/linkedList/#两个链表生成相加链表" class="sidebar-link">两个链表生成相加链表</a></li></ul></li><li><a href="/algorithm/Math/" class="sidebar-link">Math</a></li><li><a href="/algorithm/sorting/" class="sidebar-link">排序算法</a></li><li><a href="/algorithm/Stack/" class="sidebar-link">栈</a></li><li><a href="/algorithm/String/" class="sidebar-link">String</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>设计模式</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>vue源码学习</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>网络</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>node</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>浏览器</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>工程</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>CSS</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="链表"><a href="#链表" class="header-anchor">#</a> 链表</h1> <h2 id="链表反转"><a href="#链表反转" class="header-anchor">#</a> 链表反转</h2> <ul><li>创建<code>prev</code>变量，初始值为null，缓存上一个节点</li> <li>创建<code>current</code>遍历，指向当前节点</li> <li>从head开始遍历，head指向<code>current</code>，在满足<code>current</code>不为空的条件下遍历
+<ul><li>取出当前节点的下一个节点next</li> <li>把当前节点的next指向上一个节点</li> <li>把prev更新为当前节点</li> <li>把当前节点更新为next</li></ul></li> <li>返回遍历结束后的<code>prev</code>则可以得到反转后的链表</li></ul> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">reverseLinked</span><span class="token punctuation">(</span><span class="token parameter">head</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> prev <span class="token operator">=</span> <span class="token keyword">null</span>
+    <span class="token keyword">let</span> current <span class="token operator">=</span> head
+    <span class="token keyword">while</span><span class="token punctuation">(</span>current<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> next <span class="token operator">=</span> current<span class="token punctuation">.</span>next
+        current<span class="token punctuation">.</span>next <span class="token operator">=</span> prev
+        prev <span class="token operator">=</span> current
+        current <span class="token operator">=</span> next
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> prev
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="回文链表"><a href="#回文链表" class="header-anchor">#</a> 回文链表</h2> <p>遍历链表把每一个节点取出保存到数组，再通过数组判断是否是回文结构</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">isPail</span><span class="token punctuation">(</span><span class="token parameter">head</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> array <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>head<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        array<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>head<span class="token punctuation">.</span>val<span class="token punctuation">)</span>
+        head <span class="token operator">=</span> head<span class="token punctuation">.</span>next
+    <span class="token punctuation">}</span>
+    <span class="token keyword">let</span> len <span class="token operator">=</span> array<span class="token punctuation">.</span>length
+    <span class="token keyword">let</span> times <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>len<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> times<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>array<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!==</span> array<span class="token punctuation">[</span>len <span class="token operator">-</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="链表每k个一组反转"><a href="#链表每k个一组反转" class="header-anchor">#</a> 链表每k个一组反转</h2> <p>将给出的链表中的节点每 k 个一组翻转，返回翻转后的链表。如果链表中的节点数不是 k 的倍数，将最后剩下的节点保持原样</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">reverseKGroup</span><span class="token punctuation">(</span> <span class="token parameter">head <span class="token punctuation">,</span>  k</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> newHead <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+    newHead<span class="token punctuation">.</span>next <span class="token operator">=</span> head
+    <span class="token comment">// 已反转部分</span>
+    <span class="token keyword">let</span> prev <span class="token operator">=</span> newHead
+    <span class="token keyword">while</span><span class="token punctuation">(</span>head<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 每k个为一组的区间中最后一个节点</span>
+        <span class="token keyword">let</span> tail <span class="token operator">=</span> prev
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> k<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            tail <span class="token operator">=</span> tail<span class="token punctuation">.</span>next
+            <span class="token comment">// 链表剩余长度小于k，直接返回</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>tail<span class="token punctuation">.</span>next<span class="token punctuation">)</span> <span class="token keyword">return</span> newHead<span class="token punctuation">.</span>next
+        <span class="token punctuation">}</span>
+        <span class="token comment">// 剩余没有反转的部分</span>
+        <span class="token keyword">let</span> next <span class="token operator">=</span> tail<span class="token punctuation">.</span>next
+        <span class="token comment">// 对k区间进行反转</span>
+        <span class="token punctuation">[</span>head<span class="token punctuation">,</span> tail<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">reverse</span><span class="token punctuation">(</span>head<span class="token punctuation">,</span> tail<span class="token punctuation">)</span>
+        <span class="token comment">// 反转后拼接，prev.next指向反转后的头部</span>
+        prev<span class="token punctuation">.</span>next <span class="token operator">=</span> head
+        <span class="token comment">// 反转后的尾部 tail.next指向剩余没有反转的部分</span>
+        tail<span class="token punctuation">.</span>next <span class="token operator">=</span> next
+        <span class="token comment">// 已反转部分更新为当前反转区间最后一个节点tail</span>
+        prev <span class="token operator">=</span> tail
+        <span class="token comment">// 更新下一个开始反转的更新为已反转区间最后一个节点的下一个tail.next</span>
+        head <span class="token operator">=</span> tail<span class="token punctuation">.</span>next
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> newHead<span class="token punctuation">.</span>next
+<span class="token punctuation">}</span>
+<span class="token comment">// 链表反转</span>
+<span class="token keyword">function</span> <span class="token function">reverse</span><span class="token punctuation">(</span><span class="token parameter">head<span class="token punctuation">,</span> tail</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">let</span> prev <span class="token operator">=</span> <span class="token keyword">null</span>
+    <span class="token keyword">let</span> cur <span class="token operator">=</span> head
+    <span class="token keyword">while</span><span class="token punctuation">(</span>prev <span class="token operator">!==</span> tail<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">[</span>cur<span class="token punctuation">.</span>next<span class="token punctuation">,</span> prev<span class="token punctuation">,</span> cur<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>prev<span class="token punctuation">,</span> cur<span class="token punctuation">,</span> cur<span class="token punctuation">.</span>next<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>tail<span class="token punctuation">,</span> head<span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="链表指定区间反转"><a href="#链表指定区间反转" class="header-anchor">#</a> 链表指定区间反转</h2> <p>将一个节点数为 size 链表 m 位置到 n 位置之间的区间反转，要求时间复杂度 O(n)，空间复杂度 O(1)</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">ListNode</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>val <span class="token operator">=</span> x<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">reverseBetween</span><span class="token punctuation">(</span> <span class="token parameter">head <span class="token punctuation">,</span>  m <span class="token punctuation">,</span>  n</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> newHead <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+    newHead<span class="token punctuation">.</span>next <span class="token operator">=</span> head
+    <span class="token comment">// 等待反转区间的前面部分的最后一个节点，用于反转后与区间连接</span>
+    <span class="token keyword">let</span> prev <span class="token operator">=</span> newHead
+    <span class="token comment">// 等待反转区间的第一个节点，从它开始反转</span>
+    <span class="token keyword">let</span> cur <span class="token operator">=</span> head
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> m<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        prev <span class="token operator">=</span> prev<span class="token punctuation">.</span>next
+        cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>next
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 区间反转，并与区间的前后部分连接</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> n<span class="token operator">-</span>m<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// next永远指向cur的下一个节点，会随着cur变化而变化，所以next在遍历结束后会变成等待反转区间的最后一个元素</span>
+        <span class="token keyword">let</span> next <span class="token operator">=</span> cur<span class="token punctuation">.</span>next
+        <span class="token comment">// 反转后区间第一个节点要指向最后一个元素的next</span>
+        cur<span class="token punctuation">.</span>next <span class="token operator">=</span> next<span class="token punctuation">.</span>next
+        <span class="token comment">// 反转后元元素替代链表前部分的next也就是cur,链表前部分的next指向变为最后一个元素</span>
+        next<span class="token punctuation">.</span>next <span class="token operator">=</span> prev<span class="token punctuation">.</span>next
+        prev<span class="token punctuation">.</span>next <span class="token operator">=</span> next
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> newHead<span class="token punctuation">.</span>next
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="返回链表倒数第k个节点"><a href="#返回链表倒数第k个节点" class="header-anchor">#</a> 返回链表倒数第k个节点</h2> <p>输入一个长度为 n 的链表，设链表中的元素的值为ai ，返回该链表中倒数第k个节点
+<code>遍历链表获取长度len，len-k个节点next就是目标节点</code></p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">FindKthToTail</span><span class="token punctuation">(</span><span class="token parameter">head<span class="token punctuation">,</span> k</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> cur <span class="token operator">=</span> head<span class="token punctuation">,</span>len <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>cur<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>next
+        len<span class="token operator">++</span>
+    <span class="token punctuation">}</span>
+    cur <span class="token operator">=</span> head
+    <span class="token comment">// 链表长度不符合</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>len <span class="token operator">&lt;</span> k<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">null</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token operator">-</span>k<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>next
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> cur
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="两个链表的第一个公共结点"><a href="#两个链表的第一个公共结点" class="header-anchor">#</a> 两个链表的第一个公共结点</h2> <p>输入两个无环的单向链表，找出它们的第一个公共结点，如果没有公共节点则返回空。
+<code>定义两枚指针遍历两个链表，每次更新为当前节点的next，如果两个链表的长度不同，那么将当前节点的next执行另一个链表的head，直到两枚指针指向的值相同</code></p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">FindFirstCommonNode</span><span class="token punctuation">(</span><span class="token parameter">pHead1<span class="token punctuation">,</span> pHead2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> p1 <span class="token operator">=</span> pHead1<span class="token punctuation">,</span> p2 <span class="token operator">=</span> pHead2
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>p1<span class="token operator">!==</span>p2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        p1 <span class="token operator">=</span> p1 <span class="token operator">?</span> p1<span class="token punctuation">.</span>next <span class="token operator">:</span> pHead2
+        p2 <span class="token operator">=</span> p2 <span class="token operator">?</span> p2<span class="token punctuation">.</span>next <span class="token operator">:</span> pHead1
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> p1
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="判断链表中是否有环"><a href="#判断链表中是否有环" class="header-anchor">#</a> 判断链表中是否有环</h2> <p>判断给定的链表中是否有环。如果有环则返回true，否则返回false。
+<code>链表有环指的是后面其中一个节点的next指向它前面的某一个节点，如果链表有环，快慢指针会在环中的某一个节点相遇</code></p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">hasCycle</span><span class="token punctuation">(</span><span class="token parameter">head</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>head <span class="token operator">===</span> <span class="token keyword">null</span> <span class="token operator">||</span> head<span class="token punctuation">.</span>next <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span>
+     <span class="token keyword">let</span> fast <span class="token operator">=</span> head<span class="token punctuation">,</span> slow <span class="token operator">=</span> head
+    <span class="token keyword">while</span><span class="token punctuation">(</span>fast <span class="token operator">!==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> fast<span class="token punctuation">.</span>next<span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next
+        slow <span class="token operator">=</span> slow<span class="token punctuation">.</span>next
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>fast <span class="token operator">===</span> slow<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="链表中环的入口结点"><a href="#链表中环的入口结点" class="header-anchor">#</a> 链表中环的入口结点</h2> <p>给一个长度为n链表，若其中包含环，请找出该链表的环的入口结点，否则，返回null。
+<code>链表有环指的是后面其中一个节点的next指向它前面的某一个节点</code><br> <code>使用双指针遍历，快针每次移动2个位置，慢针每次移动一个位置，如果链表有环，快慢指针会在环中的某一个节点相遇，此时定义慢针2从head开始，与慢针一起移动，当两枚慢针相等时则是环的入口，如果快针遍历结束还没有遇到入口则代表链表无环</code></p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">EntryNodeOfLoop</span><span class="token punctuation">(</span><span class="token parameter">head</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">let</span> fast <span class="token operator">=</span> head<span class="token punctuation">,</span> slow <span class="token operator">=</span> head
+    <span class="token keyword">while</span><span class="token punctuation">(</span>fast<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next
+        slow <span class="token operator">=</span> slow<span class="token punctuation">.</span>next
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>fast <span class="token operator">===</span> slow<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">let</span> slow2 <span class="token operator">=</span> head
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>slow2 <span class="token operator">!==</span> slow<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                slow <span class="token operator">=</span> slow<span class="token punctuation">.</span>next
+                slow2 <span class="token operator">=</span> slow2<span class="token punctuation">.</span>next
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> slow2
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token keyword">null</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="单链表排序"><a href="#单链表排序" class="header-anchor">#</a> 单链表排序</h2> <p><code>遍历链表将值保存到数组，遍历数组重组链表</code></p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">sortInList</span><span class="token punctuation">(</span> <span class="token parameter">head</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> cur <span class="token operator">=</span> head<span class="token punctuation">,</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>cur<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>next
+        arr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>cur<span class="token punctuation">.</span>val<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 排序</span>
+    arr<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span>b</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> a<span class="token operator">-</span>b<span class="token punctuation">)</span>
+    cur <span class="token operator">=</span> head
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        cur<span class="token punctuation">.</span>val <span class="token operator">=</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+        cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>next
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> head
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="重排链表"><a href="#重排链表" class="header-anchor">#</a> 重排链表</h2> <p>将给定的单链表 <code>L0-&gt;L1-L2-L3</code> 重排后 <code>L0-Ln-0-&gt;L1-&gt;Ln-1</code></p> <ol><li>根据快慢指针找到链表的中点，快针每次移动两步，慢针一步，从中点分割链表；
+<ul><li>链表长度是偶数时快针走到倒数第二个节点时慢针指向链表前半段的最后一个节点</li> <li>链表长度是奇数时快针走到倒数第一个节点时慢针指向链表前半段的最后一个节点</li></ul></li> <li>为链表后半段head创建一个新变量赋值为slow.next，同时把slow.next置空，断开与后半段的连接</li> <li>反转后半段连接</li> <li>遍历后半段链表与前半段拼接</li></ol> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">reorderList</span><span class="token punctuation">(</span> <span class="token parameter">head</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>head <span class="token operator">||</span> <span class="token operator">!</span>head<span class="token punctuation">.</span>next<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">null</span>
+    <span class="token comment">// 根据快慢指针找到链表的中点，快针每次移动两步，慢针一步，从中点分割链表；</span>
+    <span class="token keyword">let</span> slow <span class="token operator">=</span> head<span class="token punctuation">,</span> fast <span class="token operator">=</span> head
+    <span class="token keyword">while</span><span class="token punctuation">(</span>fast<span class="token punctuation">.</span>next <span class="token operator">&amp;&amp;</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next
+        slow <span class="token operator">=</span> slow<span class="token punctuation">.</span>next
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 为链表后半段head创建一个新变量赋值为slow.next，同时把slow.next置空，断开与后半段的连接</span>
+    <span class="token keyword">let</span> newHead <span class="token operator">=</span> slow<span class="token punctuation">.</span>next
+    slow<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">null</span>
+    newHead <span class="token operator">=</span> <span class="token function">reverse</span><span class="token punctuation">(</span>newHead<span class="token punctuation">)</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>newHead<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> temp <span class="token operator">=</span> newHead<span class="token punctuation">.</span>next
+        newHead<span class="token punctuation">.</span>next <span class="token operator">=</span> head<span class="token punctuation">.</span>next
+        head<span class="token punctuation">.</span>next <span class="token operator">=</span> newHead
+        head <span class="token operator">=</span> newHead<span class="token punctuation">.</span>next
+        newHead <span class="token operator">=</span> temp
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> head
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">reverse</span><span class="token punctuation">(</span><span class="token parameter">head</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> prev <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">,</span> cur <span class="token operator">=</span> head
+    <span class="token keyword">while</span><span class="token punctuation">(</span>cur<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> temp <span class="token operator">=</span> cur<span class="token punctuation">.</span>next
+        cur<span class="token punctuation">.</span>next <span class="token operator">=</span> prev
+        prev <span class="token operator">=</span> cur
+        cur <span class="token operator">=</span> temp
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> prev
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="合并两个排序的链表"><a href="#合并两个排序的链表" class="header-anchor">#</a> 合并两个排序的链表</h2> <p><code>创建一个head作为合并后链表的head，一个current指针指向新链表当前节点，随后遍历两个链表比较它们当前节点的值，较小的值添加到新链表中，current.next等于较小的值，然后更新新链表的指针，current更新为current.next</code></p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">ListNode</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>val <span class="token operator">=</span> x<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">Merge</span><span class="token punctuation">(</span><span class="token parameter">p1<span class="token punctuation">,</span> p2</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">let</span> head <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> current <span class="token operator">=</span> head
+    <span class="token keyword">while</span><span class="token punctuation">(</span>p1<span class="token operator">&amp;&amp;</span>p2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>p1<span class="token punctuation">.</span>val <span class="token operator">&lt;=</span> p2<span class="token punctuation">.</span>val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            current<span class="token punctuation">.</span>next <span class="token operator">=</span> p1
+            current <span class="token operator">=</span> current<span class="token punctuation">.</span>next
+            p1 <span class="token operator">=</span> p1<span class="token punctuation">.</span>next
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            current<span class="token punctuation">.</span>next <span class="token operator">=</span> p2
+            current <span class="token operator">=</span> current<span class="token punctuation">.</span>next
+            p2 <span class="token operator">=</span> p2<span class="token punctuation">.</span>next
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 取出较长链表剩余的节点拼接</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>p1<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        current<span class="token punctuation">.</span>next <span class="token operator">=</span> p1
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        current<span class="token punctuation">.</span>next <span class="token operator">=</span> p2
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> head<span class="token punctuation">.</span>next
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="删除链表的倒数第n个节点"><a href="#删除链表的倒数第n个节点" class="header-anchor">#</a> 删除链表的倒数第n个节点</h2> <p>给定一个链表，删除链表的倒数第 n 个节点并返回链表的头指针
+<code>遍历链表，得到链表长度，根据长度和n找出目标节点的索引值。再次从头遍历到索引值-1位置，找出删除目标节点的前一个值cur，cur.next = cur.next.next指向指向目标的下一个值，实现删除</code></p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">removeNthFromEnd</span><span class="token punctuation">(</span> <span class="token parameter">head <span class="token punctuation">,</span>  n</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// write code here</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>head<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">null</span>
+    <span class="token keyword">let</span> len <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">let</span> current <span class="token operator">=</span> head
+    <span class="token comment">// 获取链表长度</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>current<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        current <span class="token operator">=</span> current<span class="token punctuation">.</span>next
+        len<span class="token operator">++</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 删除目标节点的索引值</span>
+    <span class="token keyword">let</span> index <span class="token operator">=</span> len <span class="token operator">-</span> n
+    <span class="token comment">// 更新current为head</span>
+    current <span class="token operator">=</span> head
+    <span class="token comment">// 删除头部</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> head<span class="token punctuation">.</span>next
+    <span class="token punctuation">}</span>
+    <span class="token comment">// current为删除目标节点的前一个值</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> index <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        current <span class="token operator">=</span> current<span class="token punctuation">.</span>next
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 删除节点</span>
+    current<span class="token punctuation">.</span>next <span class="token operator">=</span> current<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next
+    <span class="token keyword">return</span> head
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="删除链表中的重复元素"><a href="#删除链表中的重复元素" class="header-anchor">#</a> 删除链表中的重复元素</h2> <p>删除给出链表中的重复元素（链表中元素从小到大有序），使链表中的所有元素都只出现一次</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">deleteDuplicates</span><span class="token punctuation">(</span> <span class="token parameter">head</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// write code here</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>head<span class="token punctuation">)</span> <span class="token keyword">return</span> head
+    <span class="token keyword">let</span> cur <span class="token operator">=</span> head
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>cur<span class="token punctuation">.</span>next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>cur<span class="token punctuation">.</span>next<span class="token punctuation">.</span>val <span class="token operator">===</span> cur<span class="token punctuation">.</span>val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            cur<span class="token punctuation">.</span>next <span class="token operator">=</span> cur<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>next
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span> 
+    <span class="token keyword">return</span> head
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="两个链表生成相加链表"><a href="#两个链表生成相加链表" class="header-anchor">#</a> 两个链表生成相加链表</h2> <p>假设链表中每一个节点的值都在 0 - 9 之间，那么链表整体就可以代表一个整数。
+给定两个这种链表，请生成代表两个整数相加值的结果链表。
+<code>对两个链表反转，接着遍历相加，得到结果后再次反转</code></p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">addInList</span><span class="token punctuation">(</span> <span class="token parameter">head1<span class="token punctuation">,</span>  head2</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// write code here</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>head1<span class="token punctuation">)</span> <span class="token keyword">return</span> head2
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>head2<span class="token punctuation">)</span> <span class="token keyword">return</span> head1
+    
+    <span class="token comment">// 先对链表进行反转，反转后从末位相加</span>
+    head1 <span class="token operator">=</span> <span class="token function">reverse</span><span class="token punctuation">(</span>head1<span class="token punctuation">)</span>
+    head2 <span class="token operator">=</span> <span class="token function">reverse</span><span class="token punctuation">(</span>head2<span class="token punctuation">)</span>
+    <span class="token keyword">let</span> head <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token comment">// 记录进位的数值</span>
+    <span class="token keyword">let</span> prev <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">let</span> cur <span class="token operator">=</span> head
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>head1 <span class="token operator">||</span> head2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> val <span class="token operator">=</span> prev
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>head1<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            val <span class="token operator">+=</span> head1<span class="token punctuation">.</span>val
+            head1 <span class="token operator">=</span> head1<span class="token punctuation">.</span>next
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>head2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            val <span class="token operator">+=</span> head2<span class="token punctuation">.</span>val
+            head2 <span class="token operator">=</span> head2<span class="token punctuation">.</span>next
+        <span class="token punctuation">}</span>
+        <span class="token comment">// 整除10且不等于0进1，否则为Math.floor(val/10)</span>
+        prev <span class="token operator">=</span> val<span class="token operator">%</span><span class="token number">10</span> <span class="token operator">===</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> val <span class="token operator">!==</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token number">1</span> <span class="token operator">:</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>val<span class="token operator">/</span><span class="token number">10</span><span class="token punctuation">)</span>
+        cur<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span>val<span class="token operator">%</span><span class="token number">10</span><span class="token punctuation">)</span>
+        cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>next
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 可能存在遍历后还有进位没有处理，判断prev是否等于0决定</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>prev <span class="token operator">!==</span> <span class="token number">0</span><span class="token punctuation">)</span> cur<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span>prev<span class="token punctuation">)</span>
+    <span class="token comment">// 求值后再次反转链表得到最终结果</span>
+    <span class="token keyword">return</span> <span class="token function">reverse</span><span class="token punctuation">(</span>head<span class="token punctuation">.</span>next<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 反转链表</span>
+<span class="token keyword">function</span> <span class="token function">reverse</span><span class="token punctuation">(</span><span class="token parameter">head</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> cur <span class="token operator">=</span> head<span class="token punctuation">,</span> prev <span class="token operator">=</span> <span class="token keyword">null</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>cur<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> next <span class="token operator">=</span> cur<span class="token punctuation">.</span>next
+        cur<span class="token punctuation">.</span>next <span class="token operator">=</span> prev
+        prev <span class="token operator">=</span> cur
+        cur <span class="token operator">=</span> next
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> prev
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/algorithm/KMP/" class="prev">
+        KMP
+      </a></span> <span class="next"><a href="/algorithm/Math/">
+        Math
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.5ec938e9.js" defer></script><script src="/assets/js/2.270d282d.js" defer></script><script src="/assets/js/29.64bc9c06.js" defer></script>
+  </body>
+</html>
